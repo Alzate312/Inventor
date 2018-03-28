@@ -2,7 +2,7 @@
 CC=g++
  
 #my program name
-PRGNAME=hello3d
+PRGNAME=hello3d.exe
  
 #library search directory
 LIBDIR=-L/usr/local/lib
