@@ -1,5 +1,5 @@
 *.exe
 count
-.o
+*.txt
 .DS_store
 .ds_store
