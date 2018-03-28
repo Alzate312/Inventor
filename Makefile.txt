@@ -1,0 +1,32 @@
+#my compiler
+CC=g++
+ 
+#my program name
+PRGNAME=hello3d
+ 
+#library search directory
+LIBDIR=-L/usr/local/lib
+ 
+#library names
+#uses libGLEW.a libGLFW.a
+LIBNAME= -lglfw -lglew -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
+
+#includes for libraries
+INCLUDES=-I/usr/local/include
+ 
+#my compiler options
+CFLAGS=-c -Wall
+
+
+all: hello3d.o
+	$(CC) $(LIBDIR) $(LIBNAME) -o $(PRGNAME) hello3d.o
+ 
+#main.cpp is the dependency of main.o
+
+hello3d.o: hello3d.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) hello3d.cpp
+
+ 
+ 
+clean:
+	rm -rf *o booom
