@@ -1,0 +1,5 @@
+*.exe
+count
+*.o
+.DS_store
+.ds_store
