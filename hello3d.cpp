@@ -57,6 +57,63 @@ float vertices[] = {
     -1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
     -1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f
 };
+float lines[] = {
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+
+    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+     1.0f, -1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f,  1.0f,    0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f, 1.0f,    0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f,  1.0f,    0.83529411f,0.22745098f,0.10196078,
+
+    -1.0f,  1.0f,  1.0f,    0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+
+    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078
+
+
+};
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
@@ -191,10 +248,31 @@ int main()
     glEnable (GL_BLEND); 
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_DEPTH_TEST);
+    //line properties
+    glEnable( GL_LINE_SMOOTH );
+    glEnable( GL_LINE_STIPPLE );
+    glLineWidth( 1000 );
+
     
-    unsigned int VBO, VAO;
+    unsigned int VBO, VAO,VAOLINES,VBOLINES;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
+    glGenVertexArrays(1, &VAOLINES);
+    glGenBuffers(1, &VBOLINES);
+
+
+    //bind the lines array object for lines
+    glBindVertexArray(VAOLINES);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBOLINES);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(lines), lines, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,6 * sizeof(float), (void*)(3* sizeof(float)));
+    glEnableVertexAttribArray(1);
+
     // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
     glBindVertexArray(VAO);
     
@@ -206,11 +284,10 @@ int main()
     
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,6 * sizeof(float), (void*)(3* sizeof(float)));
     glEnableVertexAttribArray(1);
-    
+
     //model matrix
     glm::mat4 model;
     model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-
 
     //view matrix
     glm::mat4 view;
@@ -220,6 +297,20 @@ int main()
     //projection matrix
     glm::mat4 projection;
     projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+
+
+    //projection matrix
+    glm::mat4 projectionLines;
+    projectionLines = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    
+     //model matrix
+    glm::mat4 modelLines;
+    modelLines = glm::rotate(modelLines, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    //view matrix
+    glm::mat4 viewLines;
+    // note that we're translating the scene in the reverse direction of where we want to move
+    viewLines = glm::translate(viewLines, glm::vec3(0.0f, 0.0f, -3.0f));
     
     int modelLocation,viewLocation, projLocation;
     modelLocation = glGetUniformLocation(ourShader.ID,"model");
@@ -252,11 +343,9 @@ int main()
         ourShader.use();
 
         projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        
  		view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
  		model = glm::translate(model, cubePositions[0]);
-        
-
+    
         glUniformMatrix4fv(modelLocation,1,GL_FALSE,glm::value_ptr(model));
         glUniformMatrix4fv(viewLocation, 1, GL_FALSE, glm::value_ptr(view));
         glUniformMatrix4fv(projLocation,1,GL_FALSE,glm::value_ptr(projection));
@@ -265,8 +354,18 @@ int main()
         glBindVertexArray(VAO); 
         // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
         glDrawArrays(GL_TRIANGLES,0,36);
-        glBindVertexArray(0); // no need to unbind it every time
-        
+        glBindVertexArray(0);
+
+        projectionLines = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+ 		viewLines = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+ 		modelLines = glm::translate(modelLines, cubePositions[0]);
+        glUniformMatrix4fv(modelLocation,1,GL_FALSE,glm::value_ptr(modelLines));
+        glUniformMatrix4fv(viewLocation, 1, GL_FALSE, glm::value_ptr(viewLines));
+        glUniformMatrix4fv(projLocation,1,GL_FALSE,glm::value_ptr(projectionLines));
+        glBindVertexArray(VAOLINES);
+        glDrawArrays(GL_LINES,0,48);
+        glBindVertexArray(0);
+
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         glfwSwapBuffers(window);
         glfwPollEvents();
