@@ -1,5 +1,5 @@
 #my compiler
-CC=g++
+CC=g++ -std=c++11
  
 #my program name
 PRGNAME=hello3d.exe
