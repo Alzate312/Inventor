@@ -138,8 +138,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) // in 
     glViewport(0, 0, width, height);
 }
 
-void mouse_callback(GLFWwindow* window, double xpos, double ypos)
-{
+void mouse_callback(GLFWwindow* window, double xpos, double ypos){
     if (firstMouse)
     {
         lastX = xpos;
@@ -172,8 +171,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     cameraFront = glm::normalize(front);
 }
 
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
-{
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
     if (fov >= 1.0f && fov <= 45.0f)
         fov -= yoffset;
     if (fov <= 1.0f)
@@ -182,8 +180,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
         fov = 45.0f;
 }
 
-void processInput(GLFWwindow *window)//in order to close the window if it's pressed escape key
-{
+void processInput(GLFWwindow *window){//in order to close the window if it's pressed escape key
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     float cameraSpeed =  2.5f * deltaTime; // adjust accordingly
@@ -207,8 +204,7 @@ void initialValues(){
 
 }
 
-int main()
-{
+int main(){
     //initiliza and configure glfw
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
