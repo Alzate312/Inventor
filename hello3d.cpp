@@ -118,7 +118,8 @@ float lines[] = {
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 float cubeDimension = 0.0f;
-float divitionsSize = 0.0f;
+float divisionSize = 0.0f;
+float numberDivisions = 0;
 
 glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
@@ -133,14 +134,12 @@ float fov   =  45.0f;
 
 float deltaTime = 0.0f;	// Time between current frame and last frame
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) // in order to resize the window
-{
+void framebuffer_size_callback(GLFWwindow* window, int width, int height){ // in order to resize the window
     glViewport(0, 0, width, height);
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos){
-    if (firstMouse)
-    {
+    if (firstMouse){
         lastX = xpos;
         lastY = ypos;
         firstMouse = false;
@@ -201,7 +200,235 @@ void initialValues(){
     cout << "ingrese el ancho del cubo:\n";
     cin >> temp;
     cubeDimension= temp;
+    cout << "Ingrese el número de divisiones del cubo";
+    cin >> temp;
+    divisionSize =2.0f/temp;
+    numberDivisions = temp;
+}
 
+void splitCube(float division[], float x, float y, float z,float colorR, float colorG, float colorB){
+    int temp= 0;
+    float xpos = x;
+    float ypos = y;
+    float zpos = z;
+    int globalCounter = 0;
+    for(int i = 0; i <= numberDivisions; i++){
+       temp = globalCounter * 12;
+       division[temp] =  xpos;
+       division[temp+1] = y;
+       division[temp+2] = z;
+       division[temp+3] = colorR;
+       division[temp+4] = colorG;
+       division[temp+5] = colorB;
+       division[temp+6] = xpos;
+       division[temp+7] = -y;
+       division[temp+8] = z;
+       division[temp+9] = colorR;
+       division[temp+10] = colorG;
+       division[temp+11] = colorB;
+       xpos += divisionSize;
+       globalCounter++;
+    }
+    xpos = x;
+    for(int i = 0; i <= numberDivisions; i++){
+        temp = globalCounter * 12;
+        division[temp] =  x;
+        division[temp+1] = ypos;
+        division[temp+2] = z;
+        division[temp+3] = colorR;
+        division[temp+4] = colorG;
+        division[temp+5] = colorB;
+        division[temp+6] = -x;
+        division[temp+7] = ypos;
+        division[temp+8] = z;
+        division[temp+9] = colorR;
+        division[temp+10] = colorG;
+        division[temp+11] = colorB;
+        ypos += divisionSize;
+        globalCounter++;
+    }
+    ypos = y;
+    for(int i = 0; i <= numberDivisions; i++){
+        temp = globalCounter * 12;
+        division[temp] =  -x;
+        division[temp+1] = y;
+        division[temp+2] = zpos;
+        division[temp+3] = colorR;
+        division[temp+4] = colorG;
+        division[temp+5] = colorB;
+        division[temp+6] = -x;
+        division[temp+7] = -y;
+        division[temp+8] = zpos;
+        division[temp+9] = colorR;
+        division[temp+10] = colorG;
+        division[temp+11] = colorB;
+        zpos += divisionSize;
+        globalCounter++;
+    }
+    zpos = z;
+    for(int i = 0; i <= numberDivisions; i++){
+        temp = globalCounter * 12;
+        division[temp] =  -x;
+        division[temp+1] = ypos;
+        division[temp+2] = -z;
+        division[temp+3] = colorR;
+        division[temp+4] = colorG;
+        division[temp+5] = colorB;
+        division[temp+6] = -x;
+        division[temp+7] = ypos;
+        division[temp+8] = z;
+        division[temp+9] = colorR;
+        division[temp+10] = colorG;
+        division[temp+11] = colorB;
+        ypos += divisionSize;
+        globalCounter++;
+    }
+    ypos = y;
+    for(int i = 0; i <= numberDivisions; i++){
+       temp = globalCounter * 12;
+       division[temp] =  xpos;
+       division[temp+1] = y;
+       division[temp+2] = -z;
+       division[temp+3] = colorR;
+       division[temp+4] = colorG;
+       division[temp+5] = colorB;
+       division[temp+6] = xpos;
+       division[temp+7] = -y;
+       division[temp+8] = -z;
+       division[temp+9] = colorR;
+       division[temp+10] = colorG;
+       division[temp+11] = colorB;
+       xpos += divisionSize;
+       globalCounter++;
+    }
+    xpos = x;
+    for(int i = 0; i <= numberDivisions; i++){
+        temp = globalCounter * 12;
+        division[temp] =  x;
+        division[temp+1] = ypos;
+        division[temp+2] = -z;
+        division[temp+3] = colorR;
+        division[temp+4] = colorG;
+        division[temp+5] = colorB;
+        division[temp+6] = -x;
+        division[temp+7] = ypos;
+        division[temp+8] = -z;
+        division[temp+9] = colorR;
+        division[temp+10] = colorG;
+        division[temp+11] = colorB;
+        ypos += divisionSize;
+        globalCounter++;
+    }
+    ypos = y;
+    for(int i = 0; i <= numberDivisions; i++){
+        temp = globalCounter * 12;
+        division[temp] =  x;
+        division[temp+1] = y;
+        division[temp+2] = zpos;
+        division[temp+3] = colorR;
+        division[temp+4] = colorG;
+        division[temp+5] = colorB;
+        division[temp+6] = x;
+        division[temp+7] = -y;
+        division[temp+8] = zpos;
+        division[temp+9] = colorR;
+        division[temp+10] = colorG;
+        division[temp+11] = colorB;
+        zpos += divisionSize;
+        globalCounter++;
+    }
+    zpos = z;
+    for(int i = 0; i <= numberDivisions; i++){
+        temp = globalCounter * 12;
+        division[temp] =  x;
+        division[temp+1] = ypos;
+        division[temp+2] = z;
+        division[temp+3] = colorR;
+        division[temp+4] = colorG;
+        division[temp+5] = colorB;
+        division[temp+6] = x;
+        division[temp+7] = ypos;
+        division[temp+8] = -z;
+        division[temp+9] = colorR;
+        division[temp+10] = colorG;
+        division[temp+11] = colorB;
+        ypos += divisionSize;
+        globalCounter++;
+    }
+    ypos = y;
+    for(int i = 0; i <= numberDivisions; i++){
+        temp = globalCounter * 12;
+        division[temp] =  xpos;
+        division[temp+1] = y;
+        division[temp+2] = z;
+        division[temp+3] = colorR;
+        division[temp+4] = colorG;
+        division[temp+5] = colorB;
+        division[temp+6] = xpos;
+        division[temp+7] = y;
+        division[temp+8] = -z;
+        division[temp+9] = colorR;
+        division[temp+10] = colorG;
+        division[temp+11] = colorB;
+        xpos += divisionSize;
+        globalCounter++;
+    }
+    xpos = x;
+    for(int i = 0; i <= numberDivisions; i++){
+        temp = globalCounter * 12;
+        division[temp] =  x;
+        division[temp+1] = y;
+        division[temp+2] = zpos;
+        division[temp+3] = colorR;
+        division[temp+4] = colorG;
+        division[temp+5] = colorB;
+        division[temp+6] = -x;
+        division[temp+7] = y;
+        division[temp+8] = zpos;
+        division[temp+9] = colorR;
+        division[temp+10] = colorG;
+        division[temp+11] = colorB;
+        zpos += divisionSize;
+        globalCounter++;
+    }
+    zpos = z;
+    for(int i = 0; i <= numberDivisions; i++){
+        temp = globalCounter * 12;
+        division[temp] =  xpos;
+        division[temp+1] = -y;
+        division[temp+2] = z;
+        division[temp+3] = colorR;
+        division[temp+4] = colorG;
+        division[temp+5] = colorB;
+        division[temp+6] = xpos;
+        division[temp+7] = -y;
+        division[temp+8] = -z;
+        division[temp+9] = colorR;
+        division[temp+10] = colorG;
+        division[temp+11] = colorB;
+        xpos += divisionSize;
+        globalCounter++;
+    }
+    xpos = x;
+    for(int i = 0; i <= numberDivisions; i++){
+        temp = globalCounter * 12;
+        division[temp] =  -x;
+        division[temp+1] = -y;
+        division[temp+2] = zpos;
+        division[temp+3] = colorR;
+        division[temp+4] = colorG;
+        division[temp+5] = colorB;
+        division[temp+6] = x;
+        division[temp+7] = -y;
+        division[temp+8] = zpos;
+        division[temp+9] = colorR;
+        division[temp+10] = colorG;
+        division[temp+11] = colorB;
+        zpos += divisionSize;
+        globalCounter++;
+    }
+    zpos = z;
+    cout << globalCounter<<"\n";
 }
 
 int main(){
@@ -210,7 +437,9 @@ int main(){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);//it´s necesary on mac os
+    #ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // uncomment this statement to fix compilation on OS X
+    #endif
     
     
     GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);//create a new window in this dimension
@@ -240,7 +469,20 @@ int main(){
     //build and compile shader program
     Shader ourShader("vertexShader.vs","fragmentShader.fs");
     initialValues();
- 
+    
+    const int temp = (numberDivisions+1)*144;
+    float internalLines[temp];
+    splitCube(internalLines,-1.0f,-1.0f,-1.0f,0.83529411f,0.22745098f,0.10196078f);
+    cout<< divisionSize<<"\n";
+    int rapidi = 0;
+    for(int i = 0; i < temp; i++){
+        cout << internalLines[i] << " ";
+        if((i+1)%6 == 0) cout << "|";
+        if(internalLines[i]>1) rapidi++;
+    }
+   cout << "rapidi: " << rapidi << " "<< temp<< "\n";
+    
+
     glEnable (GL_BLEND); 
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_DEPTH_TEST);
@@ -250,13 +492,26 @@ int main(){
     glLineWidth( 1000 );
 
     
-    unsigned int VBO, VAO,VAOLINES,VBOLINES;
+    unsigned int VBO, VAO,VAOLINES,VBOLINES,VBOINTERNAL, VAOINTERNAL;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenVertexArrays(1, &VAOLINES);
     glGenBuffers(1, &VBOLINES);
+    glGenVertexArrays(1, &VAOINTERNAL);
+    glGenBuffers(1, &VBOINTERNAL);
 
+    //bind te internal lines of the each face
+    glBindVertexArray(VAOINTERNAL);
 
+    glBindBuffer(GL_ARRAY_BUFFER, VBOINTERNAL);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(internalLines), internalLines, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,6 * sizeof(float), (void*)(3* sizeof(float)));
+    glEnableVertexAttribArray(1);
+    
     //bind the lines array object for lines
     glBindVertexArray(VAOLINES);
 
@@ -280,7 +535,7 @@ int main(){
     
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,6 * sizeof(float), (void*)(3* sizeof(float)));
     glEnableVertexAttribArray(1);
-
+ 
     //model matrix
     glm::mat4 model;
     model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -307,6 +562,19 @@ int main(){
     glm::mat4 viewLines;
     // note that we're translating the scene in the reverse direction of where we want to move
     viewLines = glm::translate(viewLines, glm::vec3(0.0f, 0.0f, -3.0f));
+
+    //projection matrix
+    glm::mat4 projectionInternal;
+    projectionInternal = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    
+     //model matrix
+    glm::mat4 modelInternal;
+    modelInternal = glm::rotate(modelInternal, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    //view matrix
+    glm::mat4 viewInternal;
+    // note that we're translating the scene in the reverse direction of where we want to move
+    viewInternal = glm::translate(viewInternal, glm::vec3(0.0f, 0.0f, -3.0f));
     
     int modelLocation,viewLocation, projLocation;
     modelLocation = glGetUniformLocation(ourShader.ID,"model");
@@ -331,7 +599,6 @@ int main(){
 		lastFrame = currentFrame;
         // input
         processInput(window);
-        
         // render
         glClearColor(0.35686274f, 0.3647059f, 0.3647059f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -351,7 +618,7 @@ int main(){
         // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
         glDrawArrays(GL_TRIANGLES,0,36);
         glBindVertexArray(0);
-
+        
         projectionLines = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
  		viewLines = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
  		modelLines = glm::translate(modelLines, cubePositions[0]);
@@ -360,6 +627,16 @@ int main(){
         glUniformMatrix4fv(projLocation,1,GL_FALSE,glm::value_ptr(projectionLines));
         glBindVertexArray(VAOLINES);
         glDrawArrays(GL_LINES,0,48);
+        glBindVertexArray(0);
+
+        projectionInternal = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+ 		viewInternal = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+ 		modelInternal = glm::translate(modelInternal, cubePositions[0]);
+        glUniformMatrix4fv(modelLocation,1,GL_FALSE,glm::value_ptr(modelInternal));
+        glUniformMatrix4fv(viewLocation, 1, GL_FALSE, glm::value_ptr(viewInternal));
+        glUniformMatrix4fv(projLocation,1,GL_FALSE,glm::value_ptr(projectionInternal));
+        glBindVertexArray(VAOINTERNAL);
+        glDrawArrays(GL_LINES,0,temp);
         glBindVertexArray(0);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
