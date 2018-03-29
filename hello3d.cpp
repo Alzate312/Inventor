@@ -473,14 +473,6 @@ int main(){
     const int temp = (numberDivisions+1)*144;
     float internalLines[temp];
     splitCube(internalLines,-1.0f,-1.0f,-1.0f,0.83529411f,0.22745098f,0.10196078f);
-    cout<< divisionSize<<"\n";
-    int rapidi = 0;
-    for(int i = 0; i < temp; i++){
-        cout << internalLines[i] << " ";
-        if((i+1)%6 == 0) cout << "|";
-        if(internalLines[i]>1) rapidi++;
-    }
-   cout << "rapidi: " << rapidi << " "<< temp<< "\n";
     
 
     glEnable (GL_BLEND); 
@@ -489,8 +481,10 @@ int main(){
     //line properties
     glEnable( GL_LINE_SMOOTH );
     glEnable( GL_LINE_STIPPLE );
-    glLineWidth( 1000 );
-
+    
+    float range[2];
+    glGetFloatv(GL_LINE_WIDTH, range);
+	cout << "(" << range[0] << ", " << range[1] << ")\n";
     
     unsigned int VBO, VAO,VAOLINES,VBOLINES,VBOINTERNAL, VAOINTERNAL;
     glGenVertexArrays(1, &VAO);
@@ -604,6 +598,7 @@ int main(){
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         ourShader.use();
+        glLineWidth( 1.0f );
 
         projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
  		view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
