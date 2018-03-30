@@ -49,5 +49,5 @@ class Columna{
         void fillpoints();
         void draw(glm::mat4, glm::mat4, Shader, int, int, int);
         void verPuntos();
-
+        
 };
