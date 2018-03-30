@@ -556,19 +556,6 @@ int main(){
     glm::mat4 viewLines;
     // note that we're translating the scene in the reverse direction of where we want to move
     viewLines = glm::translate(viewLines, glm::vec3(0.0f, 0.0f, -3.0f));
-
-    //projection matrix
-    glm::mat4 projectionInternal;
-    projectionInternal = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    
-     //model matrix
-    glm::mat4 modelInternal;
-    modelInternal = glm::rotate(modelInternal, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-
-    //view matrix
-    glm::mat4 viewInternal;
-    // note that we're translating the scene in the reverse direction of where we want to move
-    viewInternal = glm::translate(viewInternal, glm::vec3(0.0f, 0.0f, -3.0f));
     
     int modelLocation,viewLocation, projLocation;
     modelLocation = glGetUniformLocation(ourShader.ID,"model");
@@ -624,12 +611,7 @@ int main(){
         glDrawArrays(GL_LINES,0,48);
         glBindVertexArray(0);
 
-        projectionInternal = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
- 		viewInternal = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
- 		modelInternal = glm::translate(modelInternal, cubePositions[0]);
-        glUniformMatrix4fv(modelLocation,1,GL_FALSE,glm::value_ptr(modelInternal));
-        glUniformMatrix4fv(viewLocation, 1, GL_FALSE, glm::value_ptr(viewInternal));
-        glUniformMatrix4fv(projLocation,1,GL_FALSE,glm::value_ptr(projectionInternal));
+        
         glBindVertexArray(VAOINTERNAL);
         glDrawArrays(GL_LINES,0,temp);
         glBindVertexArray(0);
