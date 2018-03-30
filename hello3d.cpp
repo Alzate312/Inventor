@@ -11,106 +11,107 @@
 #include <iostream>
 #include <math.h>
 #import "shaderClass.h"
+#include "columna.h"
 
 using namespace std;
 
 float vertices[] = {
-    -1.0f, -1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f,
-    1.0f, -1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f,
-    1.0f,  1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f,
-    1.0f,  1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f,
-    -1.0f,  1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f,
-    -1.0f, -1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f,
+    -1.0f, -1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
+    1.0f, -1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
+    1.0f,  1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
+    1.0f,  1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
+    -1.0f,  1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
+    -1.0f, -1.0f, -1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
 
-    -1.0f, -1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f,
-     1.0f, -1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f,
-     1.0f,  1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f,
-    1.0f,  1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f,
-    -1.0f,  1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f,
-    -1.0f, -1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f,
+    -1.0f, -1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
+     1.0f, -1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
+     1.0f,  1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
+    1.0f,  1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
+    -1.0f,  1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
+    -1.0f, -1.0f,  1.0f,  0.5647058,0.7490196f,0.986666f, 0.5f,
 
-    -1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    -1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    -1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    -1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    -1.0f, -1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    -1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
+    -1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    -1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    -1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    -1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    -1.0f, -1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    -1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
 
-    1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f, -1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
+    1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f, -1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
 
-    -1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f, -1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f, -1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    -1.0f, -1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    -1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
+    -1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f, -1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f, -1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    -1.0f, -1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    -1.0f, -1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
 
-    -1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    -1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f,
-    -1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f
+    -1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    -1.0f,  1.0f,  1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f,
+    -1.0f,  1.0f, -1.0f,  0.2509803f,0.52941176f,0.86666666f, 0.5f
 };
 float lines[] = {
-    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
 
-    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-     1.0f, -1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078,
-    -1.0f,  1.0f,  1.0f,    0.83529411f,0.22745098f,0.10196078,
-    -1.0f,  1.0f, 1.0f,    0.83529411f,0.22745098f,0.10196078,
-    -1.0f, -1.0f,  1.0f,    0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+     1.0f, -1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f,  1.0f,     0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f,  1.0f,  1.0f,    0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f,  1.0f, 1.0f,    0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f, -1.0f,  1.0f,    0.83529411f,0.22745098f,0.10196078, 1.0f,
 
-    -1.0f,  1.0f,  1.0f,    0.83529411f,0.22745098f,0.10196078,
-    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f,  1.0f,  1.0f,    0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
 
-    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
+    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
 
-    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f, -1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f, -1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
 
-    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078,
-    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f,  1.0f,  1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f,
+    -1.0f,  1.0f, -1.0f,   0.83529411f,0.22745098f,0.10196078, 1.0f
 
 
 };
@@ -206,224 +207,248 @@ void initialValues(){
     numberDivisions = temp;
 }
 
-void splitCube(float division[], float x, float y, float z,float colorR, float colorG, float colorB){
+void splitCube(float division[], float x, float y, float z,float colorR, float colorG, float colorB, float colorA){
     int temp= 0;
     float xpos = x;
     float ypos = y;
     float zpos = z;
     int globalCounter = 0;
     for(int i = 0; i <= numberDivisions; i++){
-       temp = globalCounter * 12;
+       temp = globalCounter * 14;
        division[temp] =  xpos;
        division[temp+1] = y;
        division[temp+2] = z;
        division[temp+3] = colorR;
        division[temp+4] = colorG;
        division[temp+5] = colorB;
-       division[temp+6] = xpos;
-       division[temp+7] = -y;
-       division[temp+8] = z;
-       division[temp+9] = colorR;
-       division[temp+10] = colorG;
-       division[temp+11] = colorB;
+       division[temp+6] = colorA;
+       division[temp+7] = xpos;
+       division[temp+8] = -y;
+       division[temp+9] = z;
+       division[temp+10] = colorR;
+       division[temp+11] = colorG;
+       division[temp+12] = colorB;
+       division[temp+13] = colorA;
        xpos += divisionSize;
        globalCounter++;
     }
     xpos = x;
     for(int i = 0; i <= numberDivisions; i++){
-        temp = globalCounter * 12;
+        temp = globalCounter * 14;
         division[temp] =  x;
         division[temp+1] = ypos;
         division[temp+2] = z;
         division[temp+3] = colorR;
         division[temp+4] = colorG;
         division[temp+5] = colorB;
-        division[temp+6] = -x;
-        division[temp+7] = ypos;
-        division[temp+8] = z;
-        division[temp+9] = colorR;
-        division[temp+10] = colorG;
-        division[temp+11] = colorB;
+        division[temp+6] = colorA;
+        division[temp+7] = -x;
+        division[temp+8] = ypos;
+        division[temp+9] = z;
+        division[temp+10] = colorR;
+        division[temp+11] = colorG;
+        division[temp+12] = colorB;
+        division[temp+13] = colorA;
         ypos += divisionSize;
         globalCounter++;
     }
     ypos = y;
     for(int i = 0; i <= numberDivisions; i++){
-        temp = globalCounter * 12;
+        temp = globalCounter * 14;
         division[temp] =  -x;
         division[temp+1] = y;
         division[temp+2] = zpos;
         division[temp+3] = colorR;
         division[temp+4] = colorG;
         division[temp+5] = colorB;
-        division[temp+6] = -x;
-        division[temp+7] = -y;
-        division[temp+8] = zpos;
-        division[temp+9] = colorR;
-        division[temp+10] = colorG;
-        division[temp+11] = colorB;
+        division[temp+6] = colorA;
+        division[temp+7] = -x;
+        division[temp+8] = -y;
+        division[temp+9] = zpos;
+        division[temp+10] = colorR;
+        division[temp+11] = colorG;
+        division[temp+12] = colorB;
+        division[temp+13] = colorA;
         zpos += divisionSize;
         globalCounter++;
     }
     zpos = z;
     for(int i = 0; i <= numberDivisions; i++){
-        temp = globalCounter * 12;
+        temp = globalCounter * 14;
         division[temp] =  -x;
         division[temp+1] = ypos;
         division[temp+2] = -z;
         division[temp+3] = colorR;
         division[temp+4] = colorG;
         division[temp+5] = colorB;
-        division[temp+6] = -x;
-        division[temp+7] = ypos;
-        division[temp+8] = z;
-        division[temp+9] = colorR;
-        division[temp+10] = colorG;
-        division[temp+11] = colorB;
+        division[temp+6] = colorA;
+        division[temp+7] = -x;
+        division[temp+8] = ypos;
+        division[temp+9] = z;
+        division[temp+10] = colorR;
+        division[temp+11] = colorG;
+        division[temp+12] = colorB;
+        division[temp+13] = colorA;
         ypos += divisionSize;
         globalCounter++;
     }
     ypos = y;
     for(int i = 0; i <= numberDivisions; i++){
-       temp = globalCounter * 12;
+       temp = globalCounter * 14;
        division[temp] =  xpos;
        division[temp+1] = y;
        division[temp+2] = -z;
        division[temp+3] = colorR;
        division[temp+4] = colorG;
        division[temp+5] = colorB;
-       division[temp+6] = xpos;
-       division[temp+7] = -y;
-       division[temp+8] = -z;
-       division[temp+9] = colorR;
-       division[temp+10] = colorG;
-       division[temp+11] = colorB;
+       division[temp+6] = colorA;
+       division[temp+7] = xpos;
+       division[temp+8] = -y;
+       division[temp+9] = -z;
+       division[temp+10] = colorR;
+       division[temp+11] = colorG;
+       division[temp+12] = colorB;
+       division[temp+13] = colorA;
        xpos += divisionSize;
        globalCounter++;
     }
     xpos = x;
     for(int i = 0; i <= numberDivisions; i++){
-        temp = globalCounter * 12;
+        temp = globalCounter * 14;
         division[temp] =  x;
         division[temp+1] = ypos;
         division[temp+2] = -z;
         division[temp+3] = colorR;
         division[temp+4] = colorG;
         division[temp+5] = colorB;
-        division[temp+6] = -x;
-        division[temp+7] = ypos;
-        division[temp+8] = -z;
-        division[temp+9] = colorR;
-        division[temp+10] = colorG;
-        division[temp+11] = colorB;
+        division[temp+6] = colorA;
+        division[temp+7] = -x;
+        division[temp+8] = ypos;
+        division[temp+9] = -z;
+        division[temp+10] = colorR;
+        division[temp+11] = colorG;
+        division[temp+12] = colorB;
+        division[temp+13] = colorA;
         ypos += divisionSize;
         globalCounter++;
     }
     ypos = y;
     for(int i = 0; i <= numberDivisions; i++){
-        temp = globalCounter * 12;
+        temp = globalCounter * 14;
         division[temp] =  x;
         division[temp+1] = y;
         division[temp+2] = zpos;
         division[temp+3] = colorR;
         division[temp+4] = colorG;
         division[temp+5] = colorB;
-        division[temp+6] = x;
-        division[temp+7] = -y;
-        division[temp+8] = zpos;
-        division[temp+9] = colorR;
-        division[temp+10] = colorG;
-        division[temp+11] = colorB;
+        division[temp+6] = colorA;
+        division[temp+7] = x;
+        division[temp+8] = -y;
+        division[temp+9] = zpos;
+        division[temp+10] = colorR;
+        division[temp+11] = colorG;
+        division[temp+12] = colorB;
+        division[temp+13] = colorA;
         zpos += divisionSize;
         globalCounter++;
     }
     zpos = z;
     for(int i = 0; i <= numberDivisions; i++){
-        temp = globalCounter * 12;
+        temp = globalCounter * 14;
         division[temp] =  x;
         division[temp+1] = ypos;
         division[temp+2] = z;
         division[temp+3] = colorR;
         division[temp+4] = colorG;
         division[temp+5] = colorB;
-        division[temp+6] = x;
-        division[temp+7] = ypos;
-        division[temp+8] = -z;
-        division[temp+9] = colorR;
-        division[temp+10] = colorG;
-        division[temp+11] = colorB;
+        division[temp+6] = colorA;
+        division[temp+7] = x;
+        division[temp+8] = ypos;
+        division[temp+9] = -z;
+        division[temp+10] = colorR;
+        division[temp+11] = colorG;
+        division[temp+12] = colorB;
+        division[temp+13] = colorA;
         ypos += divisionSize;
         globalCounter++;
     }
     ypos = y;
     for(int i = 0; i <= numberDivisions; i++){
-        temp = globalCounter * 12;
+        temp = globalCounter * 14;
         division[temp] =  xpos;
         division[temp+1] = y;
         division[temp+2] = z;
         division[temp+3] = colorR;
         division[temp+4] = colorG;
         division[temp+5] = colorB;
-        division[temp+6] = xpos;
-        division[temp+7] = y;
-        division[temp+8] = -z;
-        division[temp+9] = colorR;
-        division[temp+10] = colorG;
-        division[temp+11] = colorB;
+        division[temp+6] = colorA;
+        division[temp+7] = xpos;
+        division[temp+8] = y;
+        division[temp+9] = -z;
+        division[temp+10] = colorR;
+        division[temp+11] = colorG;
+        division[temp+12] = colorB;
+        division[temp+13] = colorA;
         xpos += divisionSize;
         globalCounter++;
     }
     xpos = x;
     for(int i = 0; i <= numberDivisions; i++){
-        temp = globalCounter * 12;
+        temp = globalCounter * 14;
         division[temp] =  x;
         division[temp+1] = y;
         division[temp+2] = zpos;
         division[temp+3] = colorR;
         division[temp+4] = colorG;
         division[temp+5] = colorB;
-        division[temp+6] = -x;
-        division[temp+7] = y;
-        division[temp+8] = zpos;
-        division[temp+9] = colorR;
-        division[temp+10] = colorG;
-        division[temp+11] = colorB;
+        division[temp+6] = colorA;
+        division[temp+7] = -x;
+        division[temp+8] = y;
+        division[temp+9] = zpos;
+        division[temp+10] = colorR;
+        division[temp+11] = colorG;
+        division[temp+12] = colorB;
+        division[temp+13] = colorA;
         zpos += divisionSize;
         globalCounter++;
     }
     zpos = z;
     for(int i = 0; i <= numberDivisions; i++){
-        temp = globalCounter * 12;
+        temp = globalCounter * 14;
         division[temp] =  xpos;
         division[temp+1] = -y;
         division[temp+2] = z;
         division[temp+3] = colorR;
         division[temp+4] = colorG;
         division[temp+5] = colorB;
-        division[temp+6] = xpos;
-        division[temp+7] = -y;
-        division[temp+8] = -z;
-        division[temp+9] = colorR;
-        division[temp+10] = colorG;
-        division[temp+11] = colorB;
+        division[temp+6] = colorA;
+        division[temp+7] = xpos;
+        division[temp+8] = -y;
+        division[temp+9] = -z;
+        division[temp+10] = colorR;
+        division[temp+11] = colorG;
+        division[temp+12] = colorB;
+        division[temp+13] = colorA;
         xpos += divisionSize;
         globalCounter++;
     }
     xpos = x;
     for(int i = 0; i <= numberDivisions; i++){
-        temp = globalCounter * 12;
+        temp = globalCounter * 14;
         division[temp] =  -x;
         division[temp+1] = -y;
         division[temp+2] = zpos;
         division[temp+3] = colorR;
         division[temp+4] = colorG;
         division[temp+5] = colorB;
-        division[temp+6] = x;
-        division[temp+7] = -y;
-        division[temp+8] = zpos;
-        division[temp+9] = colorR;
-        division[temp+10] = colorG;
-        division[temp+11] = colorB;
+        division[temp+6] = colorA;
+        division[temp+7] = x;
+        division[temp+8] = -y;
+        division[temp+9] = zpos;
+        division[temp+10] = colorR;
+        division[temp+11] = colorG;
+        division[temp+12] = colorB;
+        division[temp+13] = colorA;
         zpos += divisionSize;
         globalCounter++;
     }
@@ -470,9 +495,9 @@ int main(){
     Shader ourShader("vertexShader.vs","fragmentShader.fs");
     initialValues();
     
-    const int temp = (numberDivisions+1)*144;
+    const int temp = (numberDivisions+1)*168;
     float internalLines[temp];
-    splitCube(internalLines,-1.0f,-1.0f,-1.0f,0.83529411f,0.22745098f,0.10196078f);
+    splitCube(internalLines,-1.0f,-1.0f,-1.0f,0.83529411f,0.22745098f,0.10196078f,1.0f);
     
 
     glEnable (GL_BLEND); 
@@ -500,10 +525,10 @@ int main(){
     glBindBuffer(GL_ARRAY_BUFFER, VBOINTERNAL);
     glBufferData(GL_ARRAY_BUFFER, sizeof(internalLines), internalLines, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,6 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,7 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,6 * sizeof(float), (void*)(3* sizeof(float)));
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,7 * sizeof(float), (void*)(3* sizeof(float)));
     glEnableVertexAttribArray(1);
     
     //bind the lines array object for lines
@@ -512,10 +537,10 @@ int main(){
     glBindBuffer(GL_ARRAY_BUFFER, VBOLINES);
     glBufferData(GL_ARRAY_BUFFER, sizeof(lines), lines, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,6 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,7 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,6 * sizeof(float), (void*)(3* sizeof(float)));
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,7 * sizeof(float), (void*)(3* sizeof(float)));
     glEnableVertexAttribArray(1);
 
     // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
@@ -524,10 +549,10 @@ int main(){
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,6 * sizeof(float), (void*)(3* sizeof(float)));
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,7 * sizeof(float), (void*)(3* sizeof(float)));
     glEnableVertexAttribArray(1);
  
     //model matrix
@@ -571,7 +596,8 @@ int main(){
 	glm::vec3 cubePositions[] = {
         glm::vec3( 0.0f,  0.0f,  0.0f),
     };
-     
+    
+    Columna col(glm::vec3(-0.8f,-0.2f,-0.8f), 0.2f, 0.2f, 1.0f,0.4f);
     
     while(!glfwWindowShouldClose(window))
     {
@@ -615,6 +641,8 @@ int main(){
         glBindVertexArray(VAOINTERNAL);
         glDrawArrays(GL_LINES,0,temp);
         glBindVertexArray(0);
+
+        col.draw(view,projection,ourShader, viewLocation, projLocation, modelLocation);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         glfwSwapBuffers(window);
