@@ -1,6 +1,6 @@
 #version 330 core
 layout (location = 0) in vec3 aPos;
-layout (location = 1) in vec3 color;
+layout (location = 1) in vec4 color;
 
 out vec4 ourColor;
 
@@ -11,5 +11,5 @@ uniform mat4 projection;
 void main()
 {
 	gl_Position = projection * view * model * vec4(aPos, 1.0);
-	ourColor = vec4(color,0.5f);
+	ourColor = vec4(color);
 }
