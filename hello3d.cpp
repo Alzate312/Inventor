@@ -646,7 +646,6 @@ int main(){
         col.draw(view,projection,ourShader, viewLocation, projLocation, modelLocation);
         col1.draw(view,projection,ourShader, viewLocation, projLocation, modelLocation);
         
-
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         glfwSwapBuffers(window);
         glfwPollEvents();
