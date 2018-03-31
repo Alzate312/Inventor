@@ -183,7 +183,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
 void processInput(GLFWwindow *window){//in order to close the window if it's pressed escape key
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
-    float cameraSpeed =  2.5f * deltaTime; // adjust accordingly
+    float cameraSpeed =  0.8f * deltaTime; // adjust accordingly
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         cameraPos += cameraSpeed * cameraFront;
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
