@@ -598,6 +598,7 @@ int main(){
     };
     
     Columna col(glm::vec3(-0.8f,-0.2f,-0.8f), 0.2f, 0.2f, 1.0f,0.4f);
+    Columna col1(glm::vec3(0.8f,0.2f,0.8f),0.2f,0.2f,1.0f,0.4f);
     
     while(!glfwWindowShouldClose(window))
     {
@@ -643,6 +644,7 @@ int main(){
         glBindVertexArray(0);
 
         col.draw(view,projection,ourShader, viewLocation, projLocation, modelLocation);
+        col1.draw(view,projection,ourShader, viewLocation, projLocation, modelLocation);
         
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
