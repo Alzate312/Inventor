@@ -18,8 +18,8 @@ INCLUDES=-I/usr/local/include
 CFLAGS=-c -Wall
 
 
-all: hello3d.o columna.o
-	$(CC) $(LIBDIR) $(LIBNAME) -o $(PRGNAME) hello3d.o columna.o
+all: hello3d.o columna.o Wall.o
+	$(CC) $(LIBDIR) $(LIBNAME) -o $(PRGNAME) hello3d.o columna.o Wall.o
  
 #main.cpp is the dependency of main.o
 
@@ -29,5 +29,7 @@ hello3d.o: hello3d.cpp
 columna.o: columna.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) columna.cpp
 
+Wall.o: Wall.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) Wall.cpp
 clean:
 	rm -rf *o booom
