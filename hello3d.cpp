@@ -12,6 +12,7 @@
 #include <math.h>
 #import "shaderClass.h"
 #include "columna.h"
+#include "Wall.h"
 
 using namespace std;
 
