@@ -116,17 +116,22 @@ float lines[] = {
 
 
 };
-
+//screen dimension
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
+//Cube variables
 float cubeDimension = 0.0f;
+
+//info needed in order to split the cube
 float divisionSize = 0.0f;
 float numberDivisions = 0;
 
+//camera vectors
 glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
 
+//variables used in the camera cotrol
 bool firstMouse = true;
 float yaw   = -90.0f;   // yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
 float pitch =  0.0f;
@@ -134,12 +139,16 @@ float lastX =  800.0f / 2.0;
 float lastY =  600.0 / 2.0;
 float fov   =  45.0f;
 
+//this guarantee that the camera speed is the same on every pc
 float deltaTime = 0.0f;	// Time between current frame and last frame
 
+
+//mantain the window with the screnn dimensins
 void framebuffer_size_callback(GLFWwindow* window, int width, int height){ // in order to resize the window
     glViewport(0, 0, width, height);
 }
 
+//every time the mouse moves we call this functions.
 void mouse_callback(GLFWwindow* window, double xpos, double ypos){
     if (firstMouse){
         lastX = xpos;
@@ -172,6 +181,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos){
     cameraFront = glm::normalize(front);
 }
 
+//if we want zoom 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
     if (fov >= 1.0f && fov <= 45.0f)
         fov -= yoffset;
@@ -181,6 +191,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
         fov = 45.0f;
 }
 
+//every event happend is processed int his method
 void processInput(GLFWwindow *window){//in order to close the window if it's pressed escape key
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
@@ -197,6 +208,7 @@ void processInput(GLFWwindow *window){//in order to close the window if it's pre
 
 //setting height and width of the cube, save the value 
 void initialValues(){
+    //just asking for some values via console
     float temp;
 
     cout << "ingrese el ancho del cubo:\n";
@@ -208,6 +220,7 @@ void initialValues(){
     numberDivisions = temp;
 }
 
+//this method split the cube in x number of slices
 void splitCube(float division[], float x, float y, float z,float colorR, float colorG, float colorB, float colorA){
     int temp= 0;
     float xpos = x;
