@@ -598,8 +598,10 @@ int main(){
         glm::vec3( 0.0f,  0.0f,  0.0f),
     };
     
-    Columna col(glm::vec3(-0.8f,-0.2f,-0.8f), 0.2f, 0.2f, 1.0f,0.4f);
-    Columna col1(glm::vec3(0.8f,0.2f,0.8f),0.2f,0.2f,1.0f,0.4f);
+    Columna col(glm::vec3(0.2,0.8,0.2), 0.2f, 1.0f,0.4f);
+    Columna col1(glm::vec3(1.8f,1.2f,1.8f),0.2f,1.0f,0.4f);
+    Columna col2(glm::vec3(0.6f,0.6f,0.4f),glm::vec3(0.8f,0.8f,0.4f), 0.1f, 0.2f);
+    Wall par1(glm::vec3(1.0f,1.0f,1.0f),2.0f,0.5f,0.1f);
     
     while(!glfwWindowShouldClose(window))
     {
@@ -646,6 +648,8 @@ int main(){
 
         col.draw(view,projection,ourShader, viewLocation, projLocation, modelLocation);
         col1.draw(view,projection,ourShader, viewLocation, projLocation, modelLocation);
+        col2.draw(view,projection,ourShader, viewLocation, projLocation, modelLocation);
+        par1.draw(view,projection,ourShader, viewLocation, projLocation, modelLocation);
         
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         glfwSwapBuffers(window);

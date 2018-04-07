@@ -1,6 +1,53 @@
 #include "columna.h"
+Columna::Columna (glm::vec3 origin,float width, float height, float deep){
+    this->width = width;
+    this->height = height;
+    this->deep = deep;
+    this -> initialPosition = glm::vec3(origin.x-1.0f,origin.y-1.0f,origin.z-1.0f);
+    this->fillpoints();
+    this->model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    this->model = glm::translate(this->model, this->initialPosition);
+    glGenVertexArrays(1, &this->VAOCOLUMN);
+    glGenBuffers(1, &this->VBOCOLUMN);
+    glBindVertexArray(VAOCOLUMN);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBOCOLUMN);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(this->points), this->points, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,7 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,7 * sizeof(float), (void*)(3* sizeof(float)));
+    glEnableVertexAttribArray(1);
+}
+Columna::Columna (glm::vec3 pos1, glm::vec3 pos2, float width, float deep){
+    this->width = width;
+    this->deep = deep;
+    this->height = sqrt(pow(pos2.x-pos1.x,2)+pow(pos2.y-pos1.y,2)+pow(pos2.z-pos1.z,2));
+    this->initialPosition = glm::vec3(pos1.x-1, pos1.y-1, pos1.z-1);
+    this->fillpoints();
+    this->model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    float angleY = (180/M_PI) * asin((pos2.y-pos1.y)/sqrt(pow(pos2.x-pos1.x,2)+pow(pos2.y-pos1.y,2)));
+    float angleZ = (180/M_PI) * asin((pos2.x-pos1.x)/sqrt(pow(pos2.x-pos1.x,2)+pow(pos2.z-pos1.z,2)));
+    this->model = glm::rotate(model, glm::radians(-(90.0f-angleY)), glm::vec3(1.0f,0.0f,0.0f));
+    this->model = glm::rotate(model, glm::radians(-(90.0f-angleZ)), glm::vec3(0.0f,0.0f,1.0f));
+    this->model = glm::translate(this->model, this->initialPosition);
+    glGenVertexArrays(1, &this->VAOCOLUMN);
+    glGenBuffers(1, &this->VBOCOLUMN);
+    glBindVertexArray(VAOCOLUMN);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBOCOLUMN);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(this->points), this->points, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,7 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,7 * sizeof(float), (void*)(3* sizeof(float)));
+    glEnableVertexAttribArray(1);
+    
+}
 void Columna::fillpoints(){
-    float xpos = this->length/2;
+    float xpos = this->width/2;
     float ypos = this->height/2;
     float zpos = this->deep/2;
     float tempPoints[] = {
